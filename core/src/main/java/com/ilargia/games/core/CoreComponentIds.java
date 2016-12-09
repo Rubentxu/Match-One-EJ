@@ -20,20 +20,22 @@ public class CoreComponentIds {
 	public static final int GameBoard = 1;
 	public static final int GameBoardElement = 2;
 	public static final int Movable = 3;
-	public static final int Destroy = 4;
-	public static final int Position = 5;
-	public static final int Asset = 6;
-	public static final int View = 7;
+	public static final int Destroy = 6;
+	public static final int Position = 7;
+	public static final int Asset = 8;
+	public static final int View = 10;
 	public static final int totalComponents = 8;
 
 	public static String[] componentNames() {
 		return new String[]{"Interactive", "GameBoard", "GameBoardElement",
-				"Movable", "Destroy", "Position", "Asset", "View"};
+				"Movable", null, null, "Destroy", "Position", "Asset", null,
+				"View", null, null, null, null, null, null, null, null};
 	}
 
 	public static Class[] componentTypes() {
 		return new Class[]{Interactive.class, GameBoard.class,
-				GameBoardElement.class, Movable.class, Destroy.class,
-				Position.class, Asset.class, View.class};
+				GameBoardElement.class, Movable.class, null, null,
+				Destroy.class, Position.class, Asset.class, null, View.class,
+				null, null, null, null, null, null, null, null};
 	}
 }

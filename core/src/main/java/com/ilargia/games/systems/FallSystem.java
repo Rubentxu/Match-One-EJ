@@ -1,6 +1,9 @@
 package com.ilargia.games.systems;
 
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ObjectSet;
+import com.ilargia.games.EntityIndexExtension;
+import com.ilargia.games.GameBoardLogic;
 import com.ilargia.games.components.GameBoard;
 import com.ilargia.games.core.CoreMatcher;
 import com.ilargia.games.core.Entity;
@@ -8,8 +11,6 @@ import com.ilargia.games.core.Pool;
 import com.ilargia.games.entitas.interfaces.IReactiveSystem;
 import com.ilargia.games.entitas.interfaces.ISetPool;
 import com.ilargia.games.entitas.matcher.TriggerOnEvent;
-
-import java.util.Iterator;
 
 
 public class FallSystem implements ISetPool<Pool>, IReactiveSystem {
@@ -30,24 +31,30 @@ public class FallSystem implements ISetPool<Pool>, IReactiveSystem {
     public void execute(Array entities) {
         GameBoard gameBoard = _pool.getGameBoard();
 
-        for(int column = 0; column < gameBoard.columns; column++) {
-            for(int row = 1; row < gameBoard.rows; row++) {
-                movables = _pool.get(column, row)
-                        .Where(e => e.isMovable)
-                                    .ToArray();
+        for (int column = 0; column < gameBoard.columns; column++) {
+            for (int row = 1; row < gameBoard.rows; row++) {
+                ObjectSet.ObjectSetIterator<Entity> it = EntityIndexExtension.getEntitiesWithPosition(_pool, column, row).iterator();
+                Entity e;
+                Array<Entity> movables = new Array<>();
+                while (it.hasNext()) {
+                    e = it.next();
+                    if (e.isMovable())
+                        movables.add(e);
+                }
 
-                foreach(var e in movables) {
-                    moveDown(e, column, row);
+                for (Entity mov : movables) {
+                    moveDown(mov, column, row);
                 }
             }
         }
 
-        Iterator<Entity> it = entities.iterator();
-
-        while (it.hasNext()) {
-            _pool.destroyEntity(it.next());
-        }
     }
 
+    void moveDown(Entity e, int column, int row) {
+        int nextRowPos = GameBoardLogic.getNextEmptyRow(_pool, column, row);
+        if (nextRowPos != row) {
+            e.replacePosition(column, nextRowPos);
+        }
+    }
 
 }

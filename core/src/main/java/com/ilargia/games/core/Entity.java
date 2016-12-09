@@ -34,7 +34,7 @@ public class Entity extends com.ilargia.games.entitas.Entity {
 		super(totalComponents, componentPools, entityMetaData);
 	}
 
-	public boolean Interactive() {
+	public boolean isInteractive() {
 		return hasComponent(CoreComponentIds.Interactive);
 	}
 
@@ -86,7 +86,7 @@ public class Entity extends com.ilargia.games.entitas.Entity {
 		return this;
 	}
 
-	public boolean GameBoardElement() {
+	public boolean isGameBoardElement() {
 		return hasComponent(CoreComponentIds.GameBoardElement);
 	}
 
@@ -102,7 +102,7 @@ public class Entity extends com.ilargia.games.entitas.Entity {
 		return this;
 	}
 
-	public boolean Movable() {
+	public boolean isMovable() {
 		return hasComponent(CoreComponentIds.Movable);
 	}
 
@@ -117,7 +117,7 @@ public class Entity extends com.ilargia.games.entitas.Entity {
 		return this;
 	}
 
-	public boolean BurstMode() {
+	public boolean isBurstMode() {
 		return hasComponent(InputComponentIds.BurstMode);
 	}
 
@@ -165,7 +165,7 @@ public class Entity extends com.ilargia.games.entitas.Entity {
 		return this;
 	}
 
-	public boolean Destroy() {
+	public boolean isDestroy() {
 		return hasComponent(CoreComponentIds.Destroy);
 	}
 

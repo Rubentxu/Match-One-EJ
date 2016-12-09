@@ -10,15 +10,17 @@ import com.ilargia.games.components.Input;
  */
 public class InputComponentIds {
 
-	public static final int BurstMode = 0;
-	public static final int Input = 1;
+	public static final int BurstMode = 4;
+	public static final int Input = 9;
 	public static final int totalComponents = 2;
 
 	public static String[] componentNames() {
-		return new String[]{"BurstMode", "Input"};
+		return new String[]{null, null, null, null, "BurstMode", null, null,
+				null, null, "Input", null, null, null};
 	}
 
 	public static Class[] componentTypes() {
-		return new Class[]{BurstMode.class, Input.class};
+		return new Class[]{null, null, null, null, BurstMode.class, null, null,
+				null, null, Input.class, null, null, null};
 	}
 }
