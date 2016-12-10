@@ -13,7 +13,7 @@ import com.ilargia.games.entitas.interfaces.ISetPool;
 import com.ilargia.games.entitas.matcher.TriggerOnEvent;
 
 
-public class FallSystem implements ISetPool<Pool>, IReactiveSystem {
+public class FallSystem implements ISetPool<Pool>, IReactiveSystem<Entity> {
     private Pool _pool;
 
     @Override

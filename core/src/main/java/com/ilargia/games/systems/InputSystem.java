@@ -35,7 +35,7 @@ public class InputSystem implements ISetPool<Pool>, IExecuteSystem, ICleanupSyst
         input = _pool.isBurstMode()
                 ? Gdx.input.isButtonPressed(Input.Buttons.LEFT)
                 : (input == true) ? false : Gdx.input.isButtonPressed(Input.Buttons.LEFT);
-
+/*
         if (input) {
             hit = Physics2D.Raycast(Camera.ScreenToWorldPoint(Input.mousePosition), Vector2.Zero, 100);
             if (hit.collider != null) {
@@ -44,7 +44,7 @@ public class InputSystem implements ISetPool<Pool>, IExecuteSystem, ICleanupSyst
                 _pool.createEntity()
                         .addInput((int) pos.x, (int) pos.y);
             }
-        }
+        }*/
     }
 
     @Override
